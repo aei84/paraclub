@@ -12,9 +12,12 @@ class Settings(BaseSettings):
         env_file=".env",
         extra="ignore"
     )
-
+    # URL.create() автоматически экранирует специальные символы
+    # в логине и пароле (например @, :, /, %).
+    # Поэтому безопаснее использовать его,
+    # чем собирать строку подключения вручную.
     @property
-    def database_url(self):
+    def database_url(self) -> URL:
         return URL.create(
             drivername="postgresql+psycopg",
             username=self.DATABASE_USER,
