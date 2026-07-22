@@ -1,5 +1,5 @@
 import app.models
-from app.database.base import Base
+from app.models.base import Base
 
 target_metadata = Base.metadata
 

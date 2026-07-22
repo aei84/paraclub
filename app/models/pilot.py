@@ -1,3 +1,4 @@
+# я думал что все импорты возьмуться из __init__.py
 class Pilot(PersonMixin, BaseModel):
     __tablename__ = "pilots"
 
