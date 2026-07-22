@@ -1,41 +1,58 @@
 """
-Базовые классы моделей.
+Базовые классы моделей проекта.
 
-Все таблицы проекта наследуются от BaseModel.
-Здесь находятся общие поля, которые есть практически у каждой таблицы.
+Каждая таблица наследуется от BaseModel.
+
+Base отвечает за работу SQLAlchemy.
+
+BaseModel добавляет поля,
+которые есть практически во всех таблицах:
+    - id
+    - created_at
+    - updated_at
 """
 
 from datetime import datetime
 
-from sqlalchemy import DateTime, func
+from sqlalchemy import DateTime
+from sqlalchemy import func
 from sqlalchemy.orm import DeclarativeBase
-from sqlalchemy.orm import Mapped
-from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import Mapped #???
+from sqlalchemy.orm import mapped_column #???
 
 
 class Base(DeclarativeBase):
-    """Базовый класс SQLAlchemy."""
+    """
+    Базовый класс SQLAlchemy.
+
+    Все ORM-модели проекта наследуются
+    (через BaseModel) именно от него.
+    """
+
     pass
 
 
 class BaseModel(Base):
     """
-    Общая модель для всех таблиц.
+    Общая модель для всех таблиц проекта.
 
     Содержит:
-    - первичный ключ
-    - дату создания записи
-    - дату последнего изменения
+        id
+        created_at
+        updated_at
     """
 
     __abstract__ = True
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(
+        primary_key=True,
+        comment="Первичный ключ"
+    )
 
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True),
-        server_default=func.now(),
-        nullable=False,
+        server_default=func.now(),#???
+        nullable=False, #???
         comment="Дата создания записи"
     )
 
