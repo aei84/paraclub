@@ -1,5 +1,5 @@
 # я думал что все импорты возьмуться из __init__.py
-import app.models
+# import app.models
 from .mixins import PersonMixin # прачильно что добавил сюда?
 from .base import BaseModel # прачильно что добавил сюда?
 from sqlalchemy.orm import Mapped #???
