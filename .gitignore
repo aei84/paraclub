@@ -1,6 +1,7 @@
 .venv/
 .env
-
+test.py
+to_git.py
 __pycache__/
 *.pyc
 

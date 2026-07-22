@@ -41,6 +41,8 @@ class PersonMixin:
         comment="Отчество"
     )
 
+    # Храним телефон только цифрами:
+    # 79211234567
     phone: Mapped[str] = mapped_column(
         String(20),
         nullable=False,
